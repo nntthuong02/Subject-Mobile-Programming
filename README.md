@@ -39,10 +39,10 @@
    Kết nối thiết bị Android hoặc sử dụng trình giả lập.
    Chạy ứng dụng từ Android Studio.
 ## II. Công Nghệ Sử Dụng
-   Android SDK
-   Kotlin
-   RecyclerView
-   ViewModel
-   LiveData
+- Android SDK
+- Kotlin
+- RecyclerView
+- ViewModel
+- LiveData
 ## III.Tác Giả
    Nguyễn Ngọc Thương
