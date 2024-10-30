@@ -1,0 +1,107 @@
+<androidx.cardview.widget.CardView
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="4dp"
+    android:background="@drawable/card_background_with_border">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:background="@drawable/card_background_with_border">
+
+        <!-- Avatar -->
+        <TextView
+            android:id="@+id/tvAvatar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/circle_background"
+            android:gravity="center"
+            android:text="E"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+        <ImageView
+            android:id="@+id/ic_check"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@drawable/icon_check_blue"
+            android:visibility="gone"/>
+
+        <!-- Sender Name -->
+        <TextView
+            android:id="@+id/tvSender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edurila.com"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:maxLines="1"
+            app:layout_constraintStart_toEndOf="@id/tvAvatar"
+            app:layout_constraintTop_toTopOf="@id/tvAvatar"
+            app:layout_constraintBottom_toTopOf="@id/tvSubject"
+            android:layout_marginStart="20dp" />
+
+        <!-- Time -->
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12:34 PM"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvSender" />
+
+        <!-- Subject -->
+        <TextView
+            android:id="@+id/tvSubject"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Subject goes here"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:layout_constraintStart_toStartOf="@id/tvSender"
+            app:layout_constraintEnd_toStartOf="@id/tvTime"
+            app:layout_constraintTop_toBottomOf="@id/tvSender"
+            android:layout_marginTop="4dp" />
+
+        <!-- Preview Text -->
+        <TextView
+            android:id="@+id/tvPreview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Email preview goes here..."
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:layout_constraintStart_toStartOf="@id/tvSender"
+            app:layout_constraintEnd_toStartOf="@id/tvTime"
+            app:layout_constraintTop_toBottomOf="@id/tvSubject"
+            android:layout_marginTop="2dp" />
+
+        <!-- Icon -->
+        <ImageView
+            android:id="@+id/ivIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="17dp"
+            app:layout_constraintStart_toEndOf="@id/tvPreview"
+            app:layout_constraintBottom_toBottomOf="@id/tvPreview"
+            android:src="@drawable/star_unsellected"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
