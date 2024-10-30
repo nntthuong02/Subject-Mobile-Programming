@@ -2,7 +2,7 @@
 
 Ứng dụng quản lý email này giúp người dùng dễ dàng quản lý và tương tác với email của họ thông qua một giao diện người dùng thân thiện và trực quan.
 
-## Tính Năng Chính
+## I. Tính Năng Chính
 
 ### 1. Giao Diện Người Dùng Tinh Gọn
 - Ứng dụng có một giao diện người dùng dễ sử dụng, giúp người dùng thao tác và tìm kiếm email một cách nhanh chóng.
@@ -32,3 +32,17 @@
 1. **Clone Repository**:
    ```bash
    git clone https://github.com/username/repository-name.git
+   Mở Project:
+2. **Mở Project**:
+   Mở project trong Android Studio.
+3. **Chạy Ứng Dụng**:
+   Kết nối thiết bị Android hoặc sử dụng trình giả lập.
+   Chạy ứng dụng từ Android Studio.
+## II. Công Nghệ Sử Dụng
+   Android SDK
+   Kotlin
+   RecyclerView
+   ViewModel
+   LiveData
+## III.Tác Giả
+   Nguyễn Ngọc Thương
