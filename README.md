@@ -16,13 +16,6 @@
   
 - **Tính Năng Lưu Trữ**: Người dùng có thể lưu lại các loại tiền tệ yêu thích để truy cập nhanh chóng trong tương lai.
 
-## Công Nghệ Sử Dụng
-- **Android SDK**: Nền tảng phát triển ứng dụng di động.
-- **Kotlin**: Ngôn ngữ lập trình chính được sử dụng trong ứng dụng.
-- **RecyclerView**: Hiển thị danh sách các loại tiền tệ có sẵn.
-- **ViewModel**: Quản lý dữ liệu UI để giữ cho UI luôn cập nhật với dữ liệu.
-- **LiveData**: Đảm bảo dữ liệu phản hồi tức thì khi có sự thay đổi.
-
 ## Tác Giả
 Nguyễn Ngọc Thương
 
