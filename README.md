@@ -31,7 +31,7 @@
 
 1. **Clone Repository**:
    ```bash
-   git clone https://github.com/username/repository-name.git
+   git clone -b email https://github.com/nntthuong02/Subject-Mobile-Programming
    Mở Project:
 2. **Mở Project**:
    Mở project trong Android Studio.
