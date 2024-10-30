@@ -3,6 +3,7 @@ package com.app.demogmail
 import EmailViewModel
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.demogmail.databinding.ActivityMainBinding
 import androidx.activity.viewModels
@@ -16,21 +17,20 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Inflate the layout using ViewBinding
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Set up the Toolbar
         setSupportActionBar(binding.toolbar)
 
-        // Set up the RecyclerView
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         emailAdapter = EmailAdapter(emptyList(), emailViewModel)
         binding.recyclerView.adapter = emailAdapter
 
         // Handle FloatingActionButton click
         binding.fabCompose.setOnClickListener {
-            // Handle compose action
+            val selectedCount = emailViewModel.getSelectedEmailCount() // Phương thức trong ViewModel
+            val favoriteCount = emailViewModel.getFavoriteEmailCount()
+            Toast.makeText(this, "Tổng số email được chọn: $selectedCount \n Tổng số email ưa thích: $favoriteCount", Toast.LENGTH_SHORT).show()
         }
         emailViewModel.emails.observe(this) { emails ->
             emailAdapter.updateEmails(emails)

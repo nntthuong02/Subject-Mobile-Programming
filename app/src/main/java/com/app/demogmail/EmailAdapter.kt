@@ -33,23 +33,21 @@ class EmailAdapter(private var emails: List<Email>, private val viewModel: Email
 
             ivIcon.setImageResource(if (viewModel.isEmailStarred(position)) R.drawable.star_2__1_ else R.drawable.star_unsellected)
 
-            // Thêm sự kiện nhấn vào ngôi sao
             ivIcon.setOnClickListener {
-                // Gọi phương thức toggleStar trong ViewModel
                 viewModel.toggleStar(position)
-                notifyItemChanged(position) // Cập nhật lại item để thay đổi ảnh ngôi sao
+                notifyItemChanged(position)
             }
 
-            var isSelected = false
-
+            val isSelected = viewModel.isEmailSelected(position)
+            icCheck.visibility = if (isSelected) View.VISIBLE else View.GONE
+            cardView.setBackgroundResource(if (isSelected) R.drawable.card_background_selected else R.drawable.card_background_with_border)
 
             cardView.setOnClickListener {
-                isSelected = !isSelected // Chuyển đổi trạng thái
+                viewModel.toggleSelection(position)
 
-                icCheck.visibility = if (isSelected) View.VISIBLE else View.GONE
-
-                cardView.setBackgroundResource(if (isSelected) R.drawable.card_background_selected else R.drawable.card_background_with_border)
-                cardView.setBackgroundResource(if (isSelected) R.drawable.card_background_selected else R.drawable.card_background_with_border)
+                val isNowSelected = viewModel.isEmailSelected(position)
+                icCheck.visibility = if (isNowSelected) View.VISIBLE else View.GONE
+                cardView.setBackgroundResource(if (isNowSelected) R.drawable.card_background_selected else R.drawable.card_background_with_border)
             }
         }
     }
