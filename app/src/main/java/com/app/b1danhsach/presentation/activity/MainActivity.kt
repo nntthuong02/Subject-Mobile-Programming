@@ -6,16 +6,19 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.CalendarView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.app.b1danhsach.databinding.ActivityMainBinding
 import com.app.b1danhsach.models.Student
 import com.app.b1danhsach.util.AddressHelper
+import java.util.Calendar
 
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var addressHelper: AddressHelper
-
+    private var isCalendarVisible = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -26,11 +29,12 @@ class MainActivity : AppCompatActivity() {
         setupProvinceSpinner()
         setupCalendarView()
         setupSubmitButton()
+        toggleCalendarVisibility()
     }
 
     private fun setupProvinceSpinner() {
         val provinces = addressHelper.getProvinces()
-        binding.spinnerProvince.adapter = ArrayAdapter(this, R.layout.simple_spinner_item, provinces)
+        binding.spinnerProvince.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, provinces)
 
         binding.spinnerProvince.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -53,15 +57,18 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupCalendarView() {
         binding.btnShowCalendar.setOnClickListener {
-            binding.calendarView.visibility = if (binding.calendarView.visibility == View.GONE) View.VISIBLE else View.GONE
+            toggleCalendarVisibility() // Gọi hàm để thay đổi trạng thái
         }
 
         binding.calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
-            val selectedDate = "$dayOfMonth/${month + 1}/$year"
-            binding.btnShowCalendar.text = selectedDate
+            // Cập nhật ngày đã chọn lên nút
+            binding.btnShowCalendar.text = "$dayOfMonth/${month + 1}/$year"
+            // Ẩn CalendarView sau khi chọn ngày
             binding.calendarView.visibility = View.GONE
+            isCalendarVisible = false // Cập nhật trạng thái
         }
     }
+
 
     private fun setupSubmitButton() {
         binding.btnSubmit.setOnClickListener {
@@ -72,18 +79,20 @@ class MainActivity : AppCompatActivity() {
                 if (binding.cbMovies.isChecked) hobbies.add("Điện ảnh")
                 if (binding.cbMusic.isChecked) hobbies.add("Âm nhạc")
 
-//                val student = Student(
-//                    mssv = binding.etMSSV.text.toString(),
-//                    name = binding.etName.text.toString(),
-//                    gender = gender,
-//                    email = binding.etEmail.text.toString(),
-//                    phone = binding.etPhone.text.toString(),
-//                    birthDate = binding.btnShowCalendar.text.toString(),
-//                    province = binding.spinnerProvince.selectedItem.toString(),
-//                    district = binding.spinnerDistrict.selectedItem.toString(),
-//                    ward = binding.spinnerWard.selectedItem.toString(),
-//                    hobbies = hobbies
-//                )
+                // Chuyển đổi thông tin thành một đối tượng Student (nếu cần)
+                val student = Student(
+                    mssv = binding.etMSSV.text.toString(),
+                    name = binding.etName.text.toString(),
+                    gender = gender,
+                    email = binding.etEmail.text.toString(),
+                    phone = binding.etPhone.text.toString(),
+                    birthDate = binding.btnShowCalendar.text.toString(),
+                    province = binding.spinnerProvince.selectedItem.toString(),
+                    district = binding.spinnerDistrict.selectedItem.toString(),
+                    ward = binding.spinnerWard.selectedItem.toString(),
+                    hobbies = hobbies
+                )
+
                 Toast.makeText(this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show()
             }
         }
@@ -109,4 +118,14 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         return false
     }
+
+    private fun toggleCalendarVisibility() {
+        isCalendarVisible = !isCalendarVisible // Đổi trạng thái
+        binding.calendarView.visibility = if (isCalendarVisible) {
+            View.VISIBLE // Hiện CalendarView
+        } else {
+            View.GONE // Ẩn CalendarView
+        }
+    }
 }
+
