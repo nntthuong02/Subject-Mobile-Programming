@@ -2,8 +2,7 @@ package vn.edu.hust.studentman
 
 class StudentDataSource {
 
-    // Voice Data
-    private val voiceData = listOf(
+    private val studentData = listOf(
         StudentModel("Nguyễn Văn An", "SV001"),
         StudentModel("Trần Thị Bảo", "SV002"),
         StudentModel("Lê Hoàng Cường", "SV003"),
@@ -28,6 +27,6 @@ class StudentDataSource {
 
 
     fun getStudentData(): List<StudentModel> {
-        return voiceData
+        return studentData
     }
 }

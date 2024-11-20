@@ -27,23 +27,9 @@ class MainActivity : AppCompatActivity() {
 
     setupRecyclerView()
     observeViewModel()
-    val students = StudentDataSource().getStudentData()
     binding.btnAddNew.setOnClickListener {
       showAddStudentDialog()
     }
-
-    val studentAdapter = StudentAdapter(
-      students = listOf(),
-      onEdit = { student ->
-        showEditStudentDialog(student)
-      },
-      onDelete = { student ->
-        viewModel.deleteStudent(student)
-      }
-    )
-
-    binding.recyclerViewStudents.layoutManager = LinearLayoutManager(this@MainActivity)
-    binding.recyclerViewStudents.adapter = studentAdapter
   }
 
   private fun setupRecyclerView() {

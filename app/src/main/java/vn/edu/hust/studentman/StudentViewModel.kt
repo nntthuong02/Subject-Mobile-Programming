@@ -11,7 +11,6 @@ class StudentViewModel : ViewModel() {
     private val studentList = mutableListOf<StudentModel>()
 
     init {
-        // Load dữ liệu ban đầu
         studentList.addAll(StudentDataSource().getStudentData())
         _students.value = studentList
     }

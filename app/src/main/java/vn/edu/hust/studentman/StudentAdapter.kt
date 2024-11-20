@@ -33,12 +33,10 @@ class StudentAdapter(
     holder.textStudentName.text = student.studentName
     holder.textStudentId.text = student.studentId
 
-    // Xử lý sự kiện khi nhấn vào biểu tượng Edit
     holder.imageEdit.setOnClickListener {
       onEdit(student)
     }
 
-    // Xử lý sự kiện khi nhấn vào biểu tượng Remove
     holder.imageRemove.setOnClickListener {
       onDelete(student)
     }
