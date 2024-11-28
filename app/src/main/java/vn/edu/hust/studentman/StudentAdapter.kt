@@ -16,8 +16,8 @@ class StudentAdapter(
   class StudentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val textStudentName: TextView = itemView.findViewById(R.id.text_student_name)
     val textStudentId: TextView = itemView.findViewById(R.id.text_student_id)
-    val imageEdit: ImageView = itemView.findViewById(R.id.image_edit)
-    val imageRemove: ImageView = itemView.findViewById(R.id.image_remove)
+//    val imageEdit: ImageView = itemView.findViewById(R.id.image_edit)
+//    val imageRemove: ImageView = itemView.findViewById(R.id.image_remove)
   }
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StudentViewHolder {
@@ -33,12 +33,12 @@ class StudentAdapter(
     holder.textStudentName.text = student.studentName
     holder.textStudentId.text = student.studentId
 
-    holder.imageEdit.setOnClickListener {
-      onEdit(student)
-    }
-
-    holder.imageRemove.setOnClickListener {
-      onDelete(student)
-    }
+//    holder.imageEdit.setOnClickListener {
+//      onEdit(student)
+//    }
+//
+//    holder.imageRemove.setOnClickListener {
+//      onDelete(student)
+//    }
   }
 }
